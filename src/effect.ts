@@ -32,10 +32,10 @@ export const trigger = (target, key) => {
     effect.run()
   }
 }
-
+// 用一个全局变量存储被注册的副作用函数
 let activeEffect
 export const effect = (fn) => {
-  // 
+  // 这里存起来跑一下触发reactive的get
   const _effect = new ReactiveEffect(fn)
   _effect.run()
   return _effect.run.bind(_effect)
